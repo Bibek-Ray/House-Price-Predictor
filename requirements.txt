@@ -22,7 +22,7 @@ gunicorn==19.9.0
 h5py==2.10.0
 idna==3.3
 itsdangerous==1.1.0
-jax==0.5.7
+jax==0.4.13
 Jinja2==3.0.4
 joblib==1.0.1
 keras==2.3.1
