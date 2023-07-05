@@ -32,7 +32,7 @@ Markdown==3.3.4
 MarkupSafe==2.0.1
 matplotlib==3.5.1
 ml-dtypes==0.0.3
-numpy==1.19.5
+numpy==1.25.0
 oauthlib==3.1.1
 opencv-contrib-python==4.5.4.60
 opencv-python==4.5.4.60
