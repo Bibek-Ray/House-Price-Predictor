@@ -1,0 +1,61 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-image: url("https://i.postimg.cc/qqmFPhmv/House-price.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  max-width: 800px; /* Increased the max-width to accommodate 3 columns */
+  margin: 20px auto;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  display: grid; /* Use CSS Grid for the layout */
+  grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
+  grid-gap: 10px; /* Add some gap between the columns */
+}
+
+.input-container {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.button-container {
+  text-align: center;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}

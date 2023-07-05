@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Input Form</title>
+</head>
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-image: url("https://i.postimg.cc/qqmFPhmv/House-price.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#prediction{
+  display: flex;
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  justify-content: center;
+  font-weight: 800;
+}
+
+p{
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgba(204, 233, 15, 0.586);
+  width: 500px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  max-width: 800px; /* Increased the max-width to accommodate 3 columns */
+  margin: 20px auto;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  display: grid; /* Use CSS Grid for the layout */
+  grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
+  grid-gap: 10px; /* Add some gap between the columns */
+}
+
+.input-container {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.button-container {
+  text-align: center;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+</style>
+<body>
+
+  <h1>House Price Predictor</h1>
+  <div class="formbox">
+  <form id="input-form" action="/" method="POST">
+
+    <div class="input-container">
+      <label for="input1">Area:</label>
+      <input type="text" id="input1" name="area" required>
+    </div>
+
+    <div class="input-container">
+      <label for="input1">Bedrooms:</label>
+      <input type="text" id="input2" name="bedroom" required>
+    </div>
+
+    <div class="input-container">
+      <label for="input1">Bathrooms:</label>
+      <input type="text" id="input3" name="bathroom" required>
+    </div>
+
+    <div class="input-container">
+      <label for="input1">Stories:</label>
+      <input type="text" id="input4" name="stories" required>
+    </div>
+
+    <div class="input-container">
+      <label for="input1">Mainroad:</label>
+      <select type="text" id="input5" name="mainroad" required>
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+      </select>
+    </div>
+
+    <div class="input-container">
+      <label for="input1">Guestroom:</label>
+      <select type="text" id="input6" name="guestroom" required>
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+      </select>
+    </div>
+
+    <div class="input-container">
+      <label for="input1">Basement:</label>
+      <select type="text" id="input7" name="basement" required>
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+      </select>
+    </div>
+
+    <div class="input-container">
+      <label for="input1">Hot water heating:</label>
+      <select type="text" id="input8" name="hotwaterheating" required>
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+      </select>
+    </div>
+
+    <div class="input-container">
+      <label for="input1">Air Conditioning:</label>
+      <select type="text" id="input9" name="airconditioning" required>
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+      </select>
+    </div>
+
+    <div class="input-container">
+      <label for="input1">Parking:</label>
+      <input type="text" id="input10" name="parking" required>
+    </div>
+
+    <div class="input-container">
+      <label for="input1">Preferred Area:</label>
+      <select type="text" id="input11" name="prefarea" required>
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+      </select>
+    </div>
+
+    <div class="input-container">
+      <label for="input1">Furnishing Status:</label>
+      <select type="text" id="input12" name="furnish" required>
+        <option value="furnished">furnished</option>
+        <option value="unfurnished">unfurnished</option>
+        <option value="semi-furnished">semi-furnished</option>
+      </select>
+    </div>
+    <!-- Repeat the above div for input 2 to 12 -->
+    
+    <div class="button-container">
+      <button type="submit" onclick="send_data()">Submit</button>
+    </div>
+  </form>
+  <br>
+  <div id="prediction"><p></p></div>
+  <br>  
+</div>
+
+  
+  <script>
+       function send_data() {
+  document.getElementById("input-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    var fd = new FormData(document.querySelector('form'));
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('POST', '/predict', true);
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          document.getElementById('prediction').innerHTML = "Predicted price: $" + xhr.responseText;
+        } else {
+          console.log('Request error. Status:', xhr.status);
+        }
+      }
+    };
+
+    xhr.send(fd);
+  });
+}
+  </script>
+</body>
+</html>
